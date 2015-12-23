@@ -2325,7 +2325,7 @@ class PyBuildExt(build_ext):
         # Stefan Krah's _decimal module
         extra_compile_args = []
         undef_macros = []
-        if '--with-system-libmpdec' in sysconfig.get_config_var("CONFIG_ARGS"):
+        if '--with-libmpdec=system' in sysconfig.get_config_var("CONFIG_ARGS"):
             include_dirs = []
             libraries = ['mpdec']
             sources = ['_decimal/_decimal.c']
