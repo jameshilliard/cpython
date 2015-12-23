@@ -3123,13 +3123,20 @@ fi
 AC_SUBST(LIBFFI_INCLUDEDIR)
 
 # Check for use of the system libmpdec library
-AC_MSG_CHECKING(for --with-system-libmpdec)
-AC_ARG_WITH(system_libmpdec,
-            AS_HELP_STRING([--with-system-libmpdec], [build _decimal module using an installed libmpdec library, see Doc/library/decimal.rst (default is no)]),
+AC_MSG_CHECKING(for --with-libmpdec)
+AC_ARG_WITH(libmpdec,
+            AS_HELP_STRING([--with-libmpdec], [select which libmpdec version to use: system, builtin, none]),
             [],
-            [with_system_libmpdec="no"])
+            [with_libmpdec="builtin"])
 
-AC_MSG_RESULT($with_system_libmpdec)
+AC_MSG_RESULT($with_libmpdec)
+if test "$with_libmpdec" != "none"; then
+   MPDEC=yes
+else
+   DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _decimal"
+   MPDEC=no
+fi
+AC_SUBST(MPDEC)
 
 # Check whether _decimal should use a coroutine-local or thread-local context
 AC_MSG_CHECKING(for --with-decimal-contextvar)
