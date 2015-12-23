@@ -3153,6 +3153,12 @@ fi
 
 AC_MSG_RESULT($with_decimal_contextvar)
 
+AC_ARG_ENABLE(ossaudiodev,
+	AS_HELP_STRING([--disable-ossaudiodev], [disable OSSAUDIODEV]),
+	[ if test "$enableval" = "no"; then
+	  DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} ossaudiodev"
+	  fi])
+
 # Check for support for loadable sqlite extensions
 AC_MSG_CHECKING(for --enable-loadable-sqlite-extensions)
 AC_ARG_ENABLE(loadable-sqlite-extensions,
