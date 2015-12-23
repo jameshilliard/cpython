@@ -91,7 +91,7 @@ class build_scripts(Command):
                     adjust = True
                     post_interp = match.group(1) or b''
 
-            if adjust:
+            if adjust and not '_python_sysroot' in os.environ:
                 log.info("copying and adjusting %s -> %s", script,
                          self.build_dir)
                 updated_files.append(outfile)
