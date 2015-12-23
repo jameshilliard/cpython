@@ -15,7 +15,9 @@
 #endif
 
 #include <termios.h>
+#include <linux/serial.h>
 #include <sys/ioctl.h>
+#undef TIOCTTYGSTRUCT
 
 /* HP-UX requires that this be included to pick up MDCD, MCTS, MDSR,
  * MDTR, MRI, and MRTS (apparently used internally by some things
