@@ -6077,6 +6077,12 @@ AC_ARG_ENABLE(lib2to3,
 	AS_HELP_STRING([--disable-lib2to3], [disable lib2to3]),
 	[ LIB2TO3="${enableval}" ], [ LIB2TO3=yes ])
 
+AC_SUBST(IDLE)
+
+AC_ARG_ENABLE(idle3,
+	AS_HELP_STRING([--disable-idle3], [disable idle3 IDE]),
+	[ IDLE="${enableval}" ], [ IDLE=yes ])
+
 # generate output files
 AC_CONFIG_FILES(Makefile.pre Misc/python.pc Misc/python-embed.pc Misc/python-config.sh)
 AC_CONFIG_FILES([Modules/ld_so_aix], [chmod +x Modules/ld_so_aix])
