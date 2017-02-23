@@ -1433,7 +1433,6 @@ LIBSUBDIRS=	asyncio \
 		concurrent concurrent/futures \
 		csv \
 		ctypes ctypes/macholib \
-		curses \
 		dbm \
 		distutils distutils/command \
 		email email/mime \
@@ -1530,6 +1529,10 @@ ifeq (@TK@,yes)
 LIBSUBDIRS += tkinter
 TESTSUBDIRS += tkinter/test tkinter/test/test_tkinter \
 	tkinter/test/test_ttk
+endif
+
+ifeq (@CURSES@,yes)
+LIBSUBDIRS += curses
 endif
 
 ifeq (@LIB2TO3@,yes)
