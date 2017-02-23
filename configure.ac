@@ -3096,6 +3096,8 @@ LIBS="$withval $LIBS"
 
 PKG_PROG_PKG_CONFIG
 
+AC_SUBST(DISABLED_EXTENSIONS)
+
 # Check for use of the system expat library
 AC_MSG_CHECKING(for --with-system-expat)
 AC_ARG_WITH(system_expat,
