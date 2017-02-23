@@ -2709,11 +2709,13 @@ def main():
     import warnings
     warnings.filterwarnings("ignore",category=DeprecationWarning)
 
-    scripts = ['Tools/scripts/idle3', 'Lib/smtpd.py']
+    scripts = [ 'Lib/smtpd.py']
     if not '--disable-pydoc' in sysconfig.get_config_var("CONFIG_ARGS"):
         scripts += [ 'Tools/scripts/pydoc3' ]
     if not '--disable-lib2to3' in sysconfig.get_config_var("CONFIG_ARGS"):
         scripts += [ 'Tools/scripts/2to3' ]
+    if not '--disable-idle3' in sysconfig.get_config_var("CONFIG_ARGS"):
+        scripts += [ 'Tools/scripts/idle3' ]
 
     setup(# PyPI Metadata (PEP 301)
           name = "Python",

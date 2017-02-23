@@ -3416,6 +3416,12 @@ AC_ARG_ENABLE(lib2to3,
 	AS_HELP_STRING([--disable-lib2to3], [disable lib2to3]),
 	[ LIB2TO3="${enableval}" ], [ LIB2TO3=yes ])
 
+AC_SUBST(IDLE)
+
+AC_ARG_ENABLE(idle3,
+	AS_HELP_STRING([--disable-idle3], [disable idle3 IDE]),
+	[ IDLE="${enableval}" ], [ IDLE=yes ])
+
 # Check for enable-ipv6
 AH_TEMPLATE(ENABLE_IPV6, [Define if --enable-ipv6 is specified])
 AC_MSG_CHECKING([if --enable-ipv6 is specified])

@@ -1390,7 +1390,9 @@ bininstall: altbininstall
 	-rm -f $(DESTDIR)$(LIBPC)/python3-embed.pc
 	(cd $(DESTDIR)$(LIBPC); $(LN) -s python-$(VERSION)-embed.pc python3-embed.pc)
 	-rm -f $(DESTDIR)$(BINDIR)/idle3
+ifeq (@IDLE@,yes)
 	(cd $(DESTDIR)$(BINDIR); $(LN) -s idle$(VERSION) idle3)
+endif
 	-rm -f $(DESTDIR)$(BINDIR)/pydoc3
 ifeq (@PYDOC@,yes)
 	(cd $(DESTDIR)$(BINDIR); $(LN) -s pydoc$(VERSION) pydoc3)
@@ -1440,7 +1442,6 @@ LIBSUBDIRS=	asyncio \
 		ensurepip ensurepip/_bundled \
 		html \
 		http \
-		idlelib idlelib/Icons \
 		importlib importlib/metadata \
 		json \
 		logging \
@@ -1455,7 +1456,6 @@ LIBSUBDIRS=	asyncio \
 		zoneinfo
 TESTSUBDIRS=	ctypes/test \
 		distutils/tests \
-		idlelib/idle_test \
 		test test/audiodata \
 		test/capath test/cjkencodings \
 		test/data test/decimaltestdata \
@@ -1536,6 +1536,11 @@ endif
 
 ifeq (@EXPAT@,yes)
 LIBSUBDIRS += $(XMLLIBSUBDIRS)
+endif
+
+ifeq (@IDLE@,yes)
+LIBSUBDIRS += idlelib idlelib/Icons
+TESTSUBDIRS += idlelib/idle_test
 endif
 
 ifeq (@LIB2TO3@,yes)
