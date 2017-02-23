@@ -1446,7 +1446,6 @@ LIBSUBDIRS=	asyncio \
 		logging \
 		multiprocessing multiprocessing/dummy \
 		site-packages \
-		sqlite3 \
 		tkinter \
 		turtledemo \
 		unittest \
@@ -1459,7 +1458,6 @@ LIBSUBDIRS=	asyncio \
 TESTSUBDIRS=	ctypes/test \
 		distutils/tests \
 		idlelib/idle_test \
-		sqlite3/test \
 		test test/audiodata \
 		test/capath test/cjkencodings \
 		test/data test/decimaltestdata \
@@ -1539,6 +1537,11 @@ TESTSUBDIRS += lib2to3/tests			\
 	lib2to3/tests/data			\
 	lib2to3/tests/data/fixers		\
 	lib2to3/tests/data/fixers/myfixes
+endif
+
+ifeq (@SQLITE3@,yes)
+LIBSUBDIRS += sqlite3
+TESTSUBDIRS += sqlite3/test
 endif
 
 TEST_MODULES=@TEST_MODULES@
