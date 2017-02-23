@@ -3357,6 +3357,12 @@ AC_ARG_ENABLE(pydoc,
 	AS_HELP_STRING([--disable-pydoc], [disable pydoc]),
 	[ PYDOC="${enableval}" ], [ PYDOC=yes ])
 
+AC_SUBST(LIB2TO3)
+
+AC_ARG_ENABLE(lib2to3,
+	AS_HELP_STRING([--disable-lib2to3], [disable lib2to3]),
+	[ LIB2TO3="${enableval}" ], [ LIB2TO3=yes ])
+
 # Check for enable-ipv6
 AH_TEMPLATE(ENABLE_IPV6, [Define if --enable-ipv6 is specified])
 AC_MSG_CHECKING([if --enable-ipv6 is specified])
