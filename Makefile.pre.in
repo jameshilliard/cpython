@@ -1447,7 +1447,6 @@ LIBSUBDIRS=	asyncio \
 		logging \
 		multiprocessing multiprocessing/dummy \
 		site-packages \
-		tkinter \
 		turtledemo \
 		unittest \
 		urllib \
@@ -1523,11 +1522,15 @@ TESTSUBDIRS=	ctypes/test \
 		test/tracedmodules \
 		test/xmltestdata test/xmltestdata/c14n-20 \
 		test/ziptestdata \
-		tkinter/test tkinter/test/test_tkinter \
-		tkinter/test/test_ttk \
 		unittest/test unittest/test/testmock
 
 TEST_MODULES=@TEST_MODULES@
+
+ifeq (@TK@,yes)
+LIBSUBDIRS += tkinter
+TESTSUBDIRS += tkinter/test tkinter/test/test_tkinter \
+	tkinter/test/test_ttk
+endif
 
 ifeq (@LIB2TO3@,yes)
 LIBSUBDIRS += lib2to3 lib2to3/fixes lib2to3/pgen2
