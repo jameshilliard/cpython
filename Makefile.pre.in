@@ -1432,7 +1432,6 @@ LIBSUBDIRS=	asyncio \
 		concurrent concurrent/futures \
 		csv \
 		ctypes ctypes/macholib \
-		curses \
 		dbm \
 		distutils distutils/command \
 		email email/mime \
@@ -1547,6 +1546,9 @@ TESTSUBDIRS += tkinter/test tkinter/test/test_tkinter \
 	tkinter/test/test_ttk
 endif
 
+ifeq (@CURSES@,yes)
+LIBSUBDIRS += curses
+endif
 
 TEST_MODULES=@TEST_MODULES@
 libinstall:	build_all $(srcdir)/Modules/xxmodule.c
