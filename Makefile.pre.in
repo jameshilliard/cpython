@@ -1451,7 +1451,6 @@ LIBSUBDIRS=	asyncio \
 		urllib \
 		venv venv/scripts venv/scripts/common venv/scripts/posix \
 		wsgiref \
-		$(XMLLIBSUBDIRS) \
 		xmlrpc \
 		zoneinfo
 TESTSUBDIRS=	ctypes/test \
@@ -1533,6 +1532,10 @@ endif
 
 ifeq (@CURSES@,yes)
 LIBSUBDIRS += curses
+endif
+
+ifeq (@EXPAT@,yes)
+LIBSUBDIRS += $(XMLLIBSUBDIRS)
 endif
 
 ifeq (@LIB2TO3@,yes)
