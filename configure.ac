@@ -3351,6 +3351,11 @@ if test "$posix_threads" = "yes"; then
       AC_CHECK_FUNCS(pthread_getcpuclockid)
 fi
 
+AC_SUBST(PYDOC)
+
+AC_ARG_ENABLE(pydoc,
+	AS_HELP_STRING([--disable-pydoc], [disable pydoc]),
+	[ PYDOC="${enableval}" ], [ PYDOC=yes ])
 
 # Check for enable-ipv6
 AH_TEMPLATE(ENABLE_IPV6, [Define if --enable-ipv6 is specified])

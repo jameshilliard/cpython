@@ -2708,6 +2708,12 @@ def main():
     # turn off warnings when deprecated modules are imported
     import warnings
     warnings.filterwarnings("ignore",category=DeprecationWarning)
+
+    scripts = ['Tools/scripts/idle3', 'Tools/scripts/2to3',
+               'Lib/smtpd.py']
+    if not '--disable-pydoc' in sysconfig.get_config_var("CONFIG_ARGS"):
+        scripts += [ 'Tools/scripts/pydoc3' ]
+
     setup(# PyPI Metadata (PEP 301)
           name = "Python",
           version = sys.version.split()[0],
@@ -2733,8 +2739,7 @@ def main():
           # If you change the scripts installed here, you also need to
           # check the PyBuildScripts command above, and change the links
           # created by the bininstall target in Makefile.pre.in
-          scripts = ["Tools/scripts/pydoc3", "Tools/scripts/idle3",
-                     "Tools/scripts/2to3"]
+          scripts = scripts
         )
 
 # --install-platlib

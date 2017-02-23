@@ -1392,7 +1392,9 @@ bininstall: altbininstall
 	-rm -f $(DESTDIR)$(BINDIR)/idle3
 	(cd $(DESTDIR)$(BINDIR); $(LN) -s idle$(VERSION) idle3)
 	-rm -f $(DESTDIR)$(BINDIR)/pydoc3
+ifeq (@PYDOC@,yes)
 	(cd $(DESTDIR)$(BINDIR); $(LN) -s pydoc$(VERSION) pydoc3)
+endif
 	-rm -f $(DESTDIR)$(BINDIR)/2to3
 	(cd $(DESTDIR)$(BINDIR); $(LN) -s 2to3-$(VERSION) 2to3)
 	if test "x$(LIPO_32BIT_FLAGS)" != "x" ; then \
@@ -1443,7 +1445,6 @@ LIBSUBDIRS=	asyncio \
 		lib2to3 lib2to3/fixes lib2to3/pgen2 \
 		logging \
 		multiprocessing multiprocessing/dummy \
-		pydoc_data \
 		site-packages \
 		sqlite3 \
 		tkinter \
@@ -1532,6 +1533,11 @@ TESTSUBDIRS=	ctypes/test \
 		unittest/test unittest/test/testmock
 
 TEST_MODULES=@TEST_MODULES@
+
+ifeq (@PYDOC@,yes)
+LIBSUBDIRS += pydoc_data
+endif
+
 libinstall:	build_all $(srcdir)/Modules/xxmodule.c
 	@for i in $(SCRIPTDIR) $(LIBDEST); \
 	do \
