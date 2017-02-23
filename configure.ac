@@ -3426,6 +3426,12 @@ AC_ARG_ENABLE(unicodedata,
     	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} unicodedata"
   	  fi])
 
+AC_ARG_ENABLE(openssl,
+	AS_HELP_STRING([--disable-openssl], [disable openssl support]),
+	[ if test "$enableval" = "no"; then
+	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} ssl _ssl _hashlib"
+	  fi])
+
 AC_SUBST(TK)
 AC_ARG_ENABLE(tk,
 	AS_HELP_STRING([--disable-tk], [disable tk]),
