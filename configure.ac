@@ -1115,6 +1115,12 @@ fi
 
 AC_MSG_CHECKING(LDLIBRARY)
 
+AC_SUBST(PYC_BUILD)
+
+AC_ARG_ENABLE(pyc-build,
+	AS_HELP_STRING([--disable-pyc-build], [disable build of pyc files]),
+	[ PYC_BUILD="${enableval}" ], [ PYC_BUILD=yes ])
+
 # MacOSX framework builds need more magic. LDLIBRARY is the dynamic
 # library that we build, but we do not want to link against it (we
 # will find it with a -framework option). For this reason there is an
