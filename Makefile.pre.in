@@ -219,6 +219,8 @@ FILEMODE=	644
 # configure script arguments
 CONFIG_ARGS=	@CONFIG_ARGS@
 
+# disabled extensions
+DISABLED_EXTENSIONS=	@DISABLED_EXTENSIONS@
 
 # Subdirectories with code
 SRCDIRS= 	@SRCDIRS@
@@ -629,6 +631,7 @@ sharedmods: $(BUILDPYTHON) pybuilddir.txt Modules/_math.o
 	esac; \
 	echo "$(RUNSHARED) CC='$(CC)' LDSHARED='$(BLDSHARED)' OPT='$(OPT)' \
 		_TCLTK_INCLUDES='$(TCLTK_INCLUDES)' _TCLTK_LIBS='$(TCLTK_LIBS)' \
+		DISABLED_EXTENSIONS="$(DISABLED_EXTENSIONS)" \
 		$(PYTHON_FOR_BUILD) $(srcdir)/setup.py $$quiet build"; \
 	$(RUNSHARED) CC='$(CC)' LDSHARED='$(BLDSHARED)' OPT='$(OPT)' \
 		_TCLTK_INCLUDES='$(TCLTK_INCLUDES)' _TCLTK_LIBS='$(TCLTK_LIBS)' \
@@ -1749,7 +1752,8 @@ libainstall:	@DEF_MAKE_RULE@ python-config
 # Install the dynamically loadable modules
 # This goes into $(exec_prefix)
 sharedinstall: sharedmods
-	$(RUNSHARED) $(PYTHON_FOR_BUILD) $(srcdir)/setup.py install \
+	$(RUNSHARED) DISABLED_EXTENSIONS="$(DISABLED_EXTENSIONS)" \
+		$(PYTHON_FOR_BUILD) $(srcdir)/setup.py install \
 	   	--prefix=$(prefix) \
 		--install-scripts=$(BINDIR) \
 		--install-platlib=$(DESTSHARED) \
