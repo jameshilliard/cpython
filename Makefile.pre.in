@@ -1446,7 +1446,6 @@ LIBSUBDIRS=	asyncio \
 		logging \
 		multiprocessing multiprocessing/dummy \
 		site-packages \
-		tkinter \
 		turtledemo \
 		unittest \
 		urllib \
@@ -1523,8 +1522,6 @@ TESTSUBDIRS=	ctypes/test \
 		test/typinganndata \
 		test/xmltestdata test/xmltestdata/c14n-20 \
 		test/ziptestdata \
-		tkinter/test tkinter/test/test_tkinter \
-		tkinter/test/test_ttk \
 		unittest/test unittest/test/testmock
 
 ifeq (@PYDOC@,yes)
@@ -1543,6 +1540,13 @@ ifeq (@SQLITE3@,yes)
 LIBSUBDIRS += sqlite3
 TESTSUBDIRS += sqlite3/test
 endif
+
+ifeq (@TK@,yes)
+LIBSUBDIRS += tkinter
+TESTSUBDIRS += tkinter/test tkinter/test/test_tkinter \
+	tkinter/test/test_ttk
+endif
+
 
 TEST_MODULES=@TEST_MODULES@
 libinstall:	build_all $(srcdir)/Modules/xxmodule.c
