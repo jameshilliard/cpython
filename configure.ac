@@ -3432,6 +3432,12 @@ AC_ARG_ENABLE(openssl,
 	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} ssl _ssl _hashlib"
 	  fi])
 
+AC_ARG_ENABLE(readline,
+	AS_HELP_STRING([--disable-readline], [disable readline]),
+	[ if test "$enableval" = "no"; then
+	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} readline"
+	  fi])
+
 AC_SUBST(TK)
 AC_ARG_ENABLE(tk,
 	AS_HELP_STRING([--disable-tk], [disable tk]),
