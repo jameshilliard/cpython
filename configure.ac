@@ -3411,6 +3411,24 @@ AC_ARG_ENABLE(readline,
 	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} readline"
 	  fi])
 
+AC_ARG_ENABLE(bzip2,
+	AS_HELP_STRING([--disable-bzip2], [disable bzip2]),
+	[ if test "$enableval" = "no"; then
+	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _bz2"
+	  fi])
+
+AC_ARG_ENABLE(zlib,
+	AS_HELP_STRING([--disable-zlib], [disable zlib]),
+	[ if test "$enableval" = "no"; then
+	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} zlib"
+	  fi])
+
+AC_ARG_ENABLE(xz,
+	AS_HELP_STRING([--disable-xz], [disable xz]),
+	[ if test "$enableval" = "no"; then
+	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _lzma"
+	  fi])
+
 AC_SUBST(TK)
 AC_ARG_ENABLE(tk,
 	AS_HELP_STRING([--disable-tk], [disable tk]),
