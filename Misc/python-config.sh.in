@@ -31,7 +31,7 @@ prefix_real=$(installed_prefix "$0")
 # locations. Keep prefix & exec_prefix using their original values in case
 # they are referenced in other configure variables, to prevent double
 # substitution, issue #22140.
-prefix=$(echo "$prefix_build" | sed "s#^$prefix_build#$prefix_real#")
+prefix=$prefix_build
 exec_prefix=$(echo "$exec_prefix_build" | sed "s#^$exec_prefix_build#$prefix_real#")
 exec_prefix_real=${prefix_real}
 includedir=$(echo "@includedir@" | sed "s#^$prefix_build#$prefix_real#")
@@ -49,7 +49,7 @@ LDLIBRARY="@LDLIBRARY@"
 OPT="@OPT@"
 PY_ENABLE_SHARED="@PY_ENABLE_SHARED@"
 LDVERSION="@LDVERSION@"
-LIBDEST=${prefix_real}/lib/python${VERSION}
+LIBDEST=$( echo "${prefix}/lib/python${VERSION}" | sed "s#^$prefix_build#$prefix_real#")
 LIBPL=$(echo "@LIBPL@" | sed "s#^$prefix_build#$prefix_real#")
 SO="@EXT_SUFFIX@"
 PYTHONFRAMEWORK="@PYTHONFRAMEWORK@"
