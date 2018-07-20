@@ -1870,10 +1870,10 @@ class PyBuildExt(build_ext):
 
     def detect_uuid(self):
         # Build the _uuid module if possible
-        uuid_h = sysconfig.get_config_var("HAVE_UUID_H")
-        uuid_uuid_h = sysconfig.get_config_var("HAVE_UUID_UUID_H")
-        if uuid_h or uuid_uuid_h:
-            if sysconfig.get_config_var("HAVE_LIBUUID"):
+        uuid_h = find_file("uuid.h", self.inc_dirs,
+                               [os.path.join(inc_dir, 'uuid') for inc_dir in self.inc_dirs])
+        if uuid_h is not None:
+            if self.compiler.find_library_file(self.lib_dirs, 'uuid'):
                 uuid_libs = ["uuid"]
             else:
                 uuid_libs = []
