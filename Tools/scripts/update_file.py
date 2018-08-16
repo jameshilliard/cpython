@@ -16,7 +16,7 @@ def main(old_path, new_path):
     with open(new_path, 'rb') as f:
         new_contents = f.read()
     if old_contents != new_contents:
-        os.replace(new_path, old_path)
+        os.rename(new_path, old_path)
     else:
         os.unlink(new_path)
 
