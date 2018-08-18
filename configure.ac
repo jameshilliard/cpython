@@ -3447,6 +3447,15 @@ if test "$CURSES" = "no"; then
    DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _curses _curses_panel"
 fi
 
+AC_SUBST(UUID)
+AC_ARG_ENABLE(uuid,
+	AS_HELP_STRING([--disable-uuid], [disable uuid]),
+	[ UUID="${enableval}" ], [ UUID=yes ])
+
+if test "$UUID" = "no"; then
+   DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _uuid"
+fi
+
 AC_SUBST(PYDOC)
 
 AC_ARG_ENABLE(pydoc,
