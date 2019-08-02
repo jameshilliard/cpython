@@ -876,7 +876,11 @@ AC_MSG_CHECKING([for multiarch])
 AS_CASE([$ac_sys_system],
   [Darwin*], [MULTIARCH=""],
   [FreeBSD*], [MULTIARCH=""],
-  [MULTIARCH=$($CC --print-multiarch 2>/dev/null)]
+  [
+  # GCC 8+ returns $arch-linux-{musl,uclibc} for musl/uClibc based
+  # toolchains confusing python. Fix that up
+  MULTIARCH=$($CC --print-multiarch 2>/dev/null | sed -E 's/-linux-(musl|uclibc)*$/-linux-gnu/')
+  ]
 )
 AC_SUBST([MULTIARCH])
 AC_MSG_RESULT([$MULTIARCH])
