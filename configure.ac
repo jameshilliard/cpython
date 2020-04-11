@@ -3487,6 +3487,12 @@ if test "$UUID" = "no"; then
    DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _uuid"
 fi
 
+AC_ARG_ENABLE(berkeleydb,
+	AS_HELP_STRING([--disable-berkeleydb], [disable berkeleydb]),
+	[ if test "$enableval" = "no"; then
+	     DISABLED_EXTENSIONS="${DISABLED_EXTENSIONS} _dbm"
+	  fi])
+
 AC_SUBST(PYDOC)
 
 AC_ARG_ENABLE(pydoc,
