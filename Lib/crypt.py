@@ -94,7 +94,9 @@ def _add_method(name, *args, rounds=None):
         result = crypt('', salt)
     except OSError as e:
         # Not all libc libraries support all encryption methods.
-        if e.errno in {errno.EINVAL, errno.EPERM, errno.ENOSYS}:
+        # Not all libc libraries set errno when encryption method is not
+        # available.
+        if e.errno in {errno.EINVAL, errno.EPERM, errno.ENOSYS} or e.errno == 0:
             return False
         raise
     if result and len(result) == method.total_size:
